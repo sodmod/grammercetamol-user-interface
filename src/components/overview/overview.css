@@ -1,0 +1,34 @@
+.overview {
+  min-height: 90%;
+}
+
+.custom-responsive-width {
+  width: 90%; /* 50% for screens larger than XS */
+}
+
+.overview-size {
+  width: 90%;
+  margin: auto;
+}
+
+.paragraph {
+  font-size: 500%;
+}
+
+@media screen and (min-width: 576px) {
+  .custom-responsive-width {
+    width: 48%; /* 50% for screens larger than XS */
+  }
+}
+
+@media (max-width: 768px) {
+  .number {
+    width: 95%;
+  }
+}
+
+@media (min-width: 768px) {
+  .number {
+    width: 75%;
+  }
+}

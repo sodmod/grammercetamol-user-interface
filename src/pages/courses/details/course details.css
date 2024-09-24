@@ -1,0 +1,33 @@
+.course-detail-container {
+  width: 100%;
+  height: 100%;
+}
+
+.course-detail-image {
+  /*align-items: center;*/
+}
+
+.course-details-buttons {
+  background-color: darkgrey;
+}
+
+.contents {
+  overflow-y: auto; /* Enables vertical scrolling */
+  max-height: 100vh; /* Restrict height to viewport height for vertical scrolling */
+  width: 100%; /* Ensure the container takes up full width */
+  padding: 10px; /* Optional: Add some padding */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+@media screen and (max-width: 576px) {
+  .course-detail-image {
+    padding: 0;
+    align-items: center;
+    height: 100%;
+  }
+
+  .course-detail-image-img {
+    height: 100%;
+    object-fit: fill;
+  }
+}

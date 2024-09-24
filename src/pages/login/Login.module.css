@@ -1,0 +1,196 @@
+.section {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  background-color: white;
+}
+
+.h3 {
+  /* margin: 2rem; */
+  color: black;
+  margin-top: 80px;
+  font-size: 30px
+}
+
+.h4 {
+  color: black;
+  margin-top: 1rem;
+  font-size: 13px;
+}
+
+.center {
+  width: 70%;
+  margin: auto;
+  display: flex;
+  min-height: 50vh;
+  box-shadow: 0px 0px 28px rgba(0, 0, 0, 0.486);
+  border-radius: 3%;
+}
+
+.form {
+  width: 50%;
+  padding: 0px 50px 20px 50px;
+}
+
+.form p {
+  color: rgb(169, 52, 52);
+  text-align: center;
+}
+
+.form_ form {
+  /* margin-bottom: 9rem; */
+  /* padding: 10px */
+}
+
+#btn {
+  display: flex;
+  justify-content: center;
+  color: red;
+  padding-bottom: 1rem;
+  margin-top: 10px;
+}
+
+#signup {
+  /* display: flex;
+  justify-content: center; */
+  color: red;
+  padding-bottom: 1rem;
+}
+
+.login_image_logo {
+  margin-top: 40px;
+}
+
+.btn {
+  /* padding: 0.7rem 2rem; */
+  /* background-color: red; */
+  /* margin-top: 0.5rem; */
+}
+
+#forgot_password {
+  font-size: 10px;
+  display: flex;
+  justify-content: center;
+  color: red;
+  padding-bottom: 1rem;
+  margin-top: 10px;
+}
+
+.logo {
+  justify-self: start;
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 20px
+}
+
+.form__ {
+  width: 50%;
+  background-image: url("../../components/ui/Images/Login.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  border-radius: 0 3% 3% 0;
+}
+
+form {
+  margin-top: 40px;
+}
+
+input {
+  margin: 0px
+}
+
+.microphone {
+  position: absolute;
+  right: 30px;
+  top: 120px;
+  transform: scale(1.05);
+}
+
+@media screen and (max-width: 440px) {
+  .center {
+    width: 90%;
+    /* margin: 0 1rem; */
+  }
+}
+
+
+/* @media screen and (max-width: 850px) {
+    .form__ {
+        display: none;
+    }
+    .form {
+        width: 100%;
+    }
+} */
+
+@media (max-width: 974px) {
+  .form {
+    width: 100%;
+    padding: 0px 50px 20px 50px;
+  }
+
+  .form__ {
+    width: 30%;
+    border-radius: 0 10px 10px 0;
+  }
+
+  .microphone {
+    display: none;
+  }
+}
+
+@media (max-width: 843px) {
+  .form__ {
+    width: 30%;
+    border-radius: 0 10px 10px 0;
+  }
+}
+
+@media (max-width: 629px) {
+  .form__ {
+    width: 20%;
+  }
+}
+
+@media (max-width: 587px) {
+  .form__ {
+    width: 15%;
+    border-radius: 0 10px 10px 0;
+  }
+}
+
+@media (max-width: 544px) {
+  .form__ {
+    width: 10%;
+  }
+}
+
+@media (max-width: 521px) {
+  .form__ {
+    width: 5%;
+  }
+}
+
+@media (max-width: 500px) {
+  .h4 {
+    margin-top: 0.8rem;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 472px) {
+  .h3 {
+    /* margin: 2rem; */
+    color: black;
+    margin-top: 40px;
+    font-size: 25px
+  }
+
+  .form {
+    padding: 0px 30px 20px 30px;
+  }
+}

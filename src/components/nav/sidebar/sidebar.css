@@ -1,0 +1,20 @@
+.sidebar {
+  height: 100vh;
+  padding: 0.4rem;
+}
+
+.nav-content {
+  align-items: center;
+}
+
+.backdrop {
+  backdrop-filter: blur(20px);
+}
+
+.nav-hover {
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.nav-hover:hover {
+  background-color: #007bff;
+}
