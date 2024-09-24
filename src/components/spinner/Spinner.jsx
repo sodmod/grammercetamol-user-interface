@@ -1,8 +1,7 @@
-import React from "react";
 
 import styles from "./spinner.module.css";
 
-export const Spinner = ({classname}) => {
+export const Spinner = () => {
   return (
     <div style={{
       width: "100%",
