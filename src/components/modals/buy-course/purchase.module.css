@@ -1,0 +1,44 @@
+.modal {
+  position: fixed;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.36);
+  padding: 1rem;
+  z-index: 30;
+  animation: slide-down 300ms ease-out forwards;
+  height: 100vh;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.modal-contents {
+  width: 50%;
+  box-shadow: 0 2px 8px rgba(253, 252, 252, 0.87);
+  border-radius: 14px;
+  text-align: center;
+  margin: auto;
+  height: 50vh;
+  align-content: center;
+}
+
+.modal-contents h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.modal-buttons button {
+  padding: 0.4rem 2.5rem;
+  background-color: red;
+  margin: 0 0.4rem;
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-3rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

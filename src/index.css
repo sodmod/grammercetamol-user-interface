@@ -13,7 +13,10 @@ body {
   word-wrap: break-word;
   width: 100% !important;
   height: 100%;
-  background-color: black;
+  background-image: url("../src/assets/images/landingPage_bg.png");
+  background-position: center;
+  background-size: contain;
+  position: page;
 }
 
 * {

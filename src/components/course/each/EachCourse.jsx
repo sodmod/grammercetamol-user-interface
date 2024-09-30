@@ -17,7 +17,7 @@ const EachCourse = ({course, to, buttonText}) => {
 
   return (
     <Card className={`bg-dark shadow ${style.card_body}`}>
-      <Card.Img variant="top" src={thumbnail_url}/>
+      <Card.Img variant="top" src={Img}/>
       <Card.Body className="">
         <Card.Title className={"text-white"}>{courseName}</Card.Title>
         <Row className="pb-5">

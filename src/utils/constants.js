@@ -13,7 +13,7 @@ export const routePath = {
   course: {
     courses: "course",
     "view": "view/",
-    "watch-course": "watch-course/",
+    "stream": "stream/",
     "your-course": "your-course",
     "whitelisted-course": "whitelisted-course"
   },
@@ -65,10 +65,13 @@ export const navbarContent = [
     dirName: "Courses",
     dir: [
       {
+        menu: "Overview",
+        to: `${routePath.course.courses}`
+      },
+      {
         menu: "Your Courses",
         to: `${routePath.course.courses}/${routePath.course["your-course"]}`
       },
-      // todo: this will go to students interface
       {
         "menu": "Whitelisted Courses",
         "to": `${routePath.course.courses}/${routePath.course["whitelisted-course"]}`,

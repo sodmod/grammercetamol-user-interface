@@ -1,12 +1,8 @@
 .course-details-section {
   position: relative;
-  width: 100vw;
-  margin-top: 1.5rem;
-  height: 100vh;
 }
 
 .course-details-wrap {
-  width: 68vw;
   margin: 0 auto;
 }
 
@@ -33,7 +29,21 @@
 }
 
 .white-list button span {
-  color: white;
+  background-color: blue;
+}
+
+.nowhite-list {
+  margin-bottom: 0.34rem;
+}
+
+.nowhite-list button {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background-color: purple;
+  margin-right: 0.6rem;
+}
+.nowhite-list button span {
+  background-color: red;
 }
 
 .buy-now {
