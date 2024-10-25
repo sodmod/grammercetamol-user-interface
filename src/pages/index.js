@@ -7,6 +7,7 @@ const Courses = lazy(() => import("./courses/courses/Courses"));
 const Overview = lazy(() => import("../components/Overview/Overview"));
 const Registered = lazy(() => import("./courses/registered/Registered"));
 const Whitelisted = lazy(() => import("./courses/whitelisted/Whitelisted"));
+const CoursePayment = lazy(()=> import("./courses/payment/CoursePayment.jsx"));
 
 
 export {
@@ -17,4 +18,5 @@ export {
   Overview,
   Registered,
   Whitelisted,
+  CoursePayment,
 }

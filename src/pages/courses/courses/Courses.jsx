@@ -63,7 +63,8 @@ const Courses = () => {
     <>
       <div className={"w-100 search-container-input-div"}>
         <input
-          className={"bg-body-secondary p-2 w-75 mx-auto d-block text-black r"}
+          className={"bg-body-secondary p-2 mx-auto d-block text-black rounded-2"}
+          style={{width: '90%'}}
           type="text"
           value={searchTerm}
           onChange={onChangeHandler}

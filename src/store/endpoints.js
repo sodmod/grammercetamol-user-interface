@@ -34,6 +34,7 @@ export const endpoints = {
   },
   transaction: {
     paystack: {
+      init:  `${transaction}init-payment/`,
       initiate: `${transaction}make-payment`,
       verify: `${transaction}verify-payment`,
     }

@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import useFetchData from "../../../hooks/useFetchData";
 import {endpoints} from "../../../store/endpoints.js";
-import {Spinner} from "../../../components/spinner/Spinner.jsx"; // Assuming you have this custom hook
+import {Spinner} from "../../../components/spinner/Spinner.jsx";
 
 const CourseContent = () => {
   const {courseId} = useParams();
@@ -49,7 +49,7 @@ const CourseContent = () => {
           {data.videoIds.map((videoUrl, index) => (
             <li key={index} style={{marginBottom: "10px", backgroundColor: "yellow"}}>
               <a
-                href="#"
+                // href="#"
                 onClick={() => setSelectedUrl(videoUrl.url)}
                 style={{
                   textDecoration: "none",

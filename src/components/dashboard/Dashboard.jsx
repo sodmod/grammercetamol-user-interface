@@ -16,21 +16,30 @@ const Dashboard = () => {
   const name = getSpecificKey("lastname", "**");
 
   return (
-    <Container fluid={true} className="min-vh-100 vh-100 dashboard">
-      <Row className="h-100 p-0">
+    <Container className="min-vh-100 vh-100 dashboard">
+      <Row>
         <SideBar showFullSideBar={showFullSideBar} setShowFullSideBar={onClickHandler}/>
         {/* Main content area */}
         <Col xs={12} sm={showFullSideBar ? 9 : 10} className="px-sm-1 vh-100 h-100 m-0 px-sm-1 px-0">
-          <Navbar className="dashboard-top-nav d-none d-sm-block">
+          <Navbar style={{
+            maxHeight: '10%',
+            height: '10%',
+            paddingBottom: '0.5rem',
+            width: '100%',
+            marginBottom: '0.5rem',
+            // backgroundColor: '#ff0000'
+          }} className="d-none d-sm-block rounded-3">
             <Container className="p-0 px-sm-1">
               <Navbar.Brand href="#home" className="nav-brand">
-                <Navbar.Text className="text-danger d-none d-sm-inline-block">
+                <Navbar.Text className="text-white fs-3 fw-bold d-none d-sm-inline-block">
                   Welcome {name?.data}
                 </Navbar.Text>
               </Navbar.Brand>
               <Navbar.Toggle/>
               <Navbar.Collapse className="justify-content-end nav-image">
-                <Image src={"/src/assets/images/smile.png"} roundedCircle/>
+                <Col xs={6} md={4}>
+                  <Image src={"/src/assets/images/smile.png"} roundedCircle />
+                </Col>
               </Navbar.Collapse>
             </Container>
           </Navbar>

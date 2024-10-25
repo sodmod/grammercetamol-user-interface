@@ -22,16 +22,10 @@
 }
 
 .grid_container {
-  margin-top: 10px;
-  /* background-color: white; */
-  height: 200px;
-  max-height: 300px;
   display: grid;
-  padding: 30px;
+  padding: 0.5rem;
   grid-template-columns: repeat(3, 1fr);
-  /* Adjust the number of columns as needed */
   gap: 30px;
-  /* Adjust the gap between boxes as needed */
 }
 
 .registeredCourses {

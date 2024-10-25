@@ -25,14 +25,14 @@ const usePaystack = ({email, amount}) => {
       });
 
       if(response.data.responseCode === 200 && response.data.data) {
-        return {reference: response.data.data.reference};
+        return {response: response.data.data};
       }
     }catch(e) {
 
     }
 
 
-  }, [mutate, state])
+  }, [amount, email, mutate, state])
 
   return {
     onCall,

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 const paystackConfig = ({reference, email, amount}) => ({
   reference: reference,
   email: email,
@@ -6,3 +7,10 @@ const paystackConfig = ({reference, email, amount}) => ({
 });
 
 export default paystackConfig;
+
+
+paystackConfig.propTypes = {
+  reference: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  amount: PropTypes.number.isRequired,
+}

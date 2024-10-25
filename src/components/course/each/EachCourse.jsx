@@ -1,7 +1,5 @@
 import PropTypes from "prop-types";
 import Card from 'react-bootstrap/Card';
-
-import Img from "../../../assets/images/coursesImg/Course1.png"
 import {Col, Row} from "react-bootstrap";
 import {NavLink} from "react-router-dom";
 import Button from 'react-bootstrap/Button';
@@ -11,33 +9,33 @@ import style from "./eachcourse.module.css";
 
 
 const EachCourse = ({course, to, buttonText}) => {
-  const {thumbnail_url, courseId, lesson, courseName, authorDto, priceDTO} = course;
+  const {thumbnail_url, courseId, lesson, courseName, authorDto} = course;
 
   // todo: handle free interface and price interface later
 
   return (
-    <Card className={`bg-dark shadow ${style.card_body}`}>
-      <Card.Img variant="top" src={Img}/>
-      <Card.Body className="">
-        <Card.Title className={"text-white"}>{courseName}</Card.Title>
-        <Row className="pb-5">
-          <Col>
+    <Card className={`bg-white shadow ${style.card_body}`}>
+      <Card.Img variant="top" src={thumbnail_url} className={"bg-dark"} style={{height: "180px"}}/>
+      <Card.Body>
+        <Card.Title className={"text-black fs-4 fw-semibold"}>{courseName}</Card.Title>
+        <Row className="pb-4">
+          <Col className={"text-black"}>
             <span className="pe-1">
-              <Icons icons="fa-solid fa-layer-group"/>
+              <Icons icons="fa-solid fa-layer-group text-black"/>
             </span>
             {`${lesson} Lessons`}
           </Col>
-          <Col>
+          <Col className={"text-black"}>
             <span className="pe-1">
-              <Icons icons="fa-solid fa-clock"/>
+              <Icons icons="fa-solid fa-clock text-black"/>
             </span>
             Time interface
           </Col>
         </Row>
         <Row className="pb-5">
-          <Col>
+          <Col className={"text-black"}>
             <span className="pe-1">
-              Author <Icons icons="fa-solid fa-user fs-6"/>:
+              <Icons icons="fa-solid fa-user fs-6 text-black"/>:
             </span> {`${authorDto?.firstName} ${authorDto?.lastName}`}
           </Col>
         </Row>

@@ -2,7 +2,7 @@ import {createBrowserRouter} from "react-router-dom";
 import Login from "../pages/login/Login";
 import Register from "../pages/registration/Register";
 import CourseRoot from "../pages/courses/CourseRoot";
-import {Courses, Details, Home, Overview, Registered, Stream, Whitelisted} from "../pages/index";
+import {CoursePayment, Courses, Details, Home, Overview, Registered, Stream, Whitelisted} from "../pages/index";
 
 import {routePath} from "../utils/constants.js";
 
@@ -45,11 +45,15 @@ export const router = createBrowserRouter([
     ]
   },
   {
+    path: "/pay/:courseId",
+    Component: CoursePayment
+  },
+  {
     path: "/login",
     Component: Login
   },
   {
     path: "/signup",
     Component: Register
-  }
+  },
 ]);
