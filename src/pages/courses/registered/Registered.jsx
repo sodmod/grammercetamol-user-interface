@@ -1,14 +1,32 @@
-import useFetchData from "../../../hooks/useFetchData.js";
-import {endpoints} from "../../../store/endpoints.js";
-import ViewCourses from "../../../components/course/view/ViewCourses.jsx";
+import {Fragment} from "react";
+import EachCourse from "../../../components/course/each/EachCourse.jsx";
 
-function Registered(){
+// const Registered = () => {
+//
+//   const {data, loading} = useFetchData(endpoints.courses.registered);
+//
+//   return <>
+//     <ViewCourses data={data} loading={loading} buttonText={"Continue Watching"} to={"continue watching"}/>
+//   </>
+// }
 
-  const {data, loading} = useFetchData(endpoints.courses.registered);
+// registered courses
+const Registered = () => {
+//   const {data, loading} = useFetchData(endpoints.courses.registered);
 
-  return <>
-    <ViewCourses data={data} loading={loading} buttonText={"Continue Watching"} to={"continue watching"}/>
-  </>
+  // jsx
+  return <Fragment>
+    <section className="courses">
+
+      <h1 className="heading">Your Courses</h1>
+
+      <div className="box-container">
+        <EachCourse/>
+      </div>
+
+    </section>
+  </Fragment>
 }
+
 
 export default Registered;

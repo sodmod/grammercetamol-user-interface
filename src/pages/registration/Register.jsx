@@ -1,217 +1,141 @@
-import {Button, Form, Input} from "antd";
-import {Link} from "react-router-dom";
+// inbuilt libraries
+import {NavLink} from "react-router-dom";
 
+// custom functions
 import useFieldChange from "../../hooks/input-hook/useFieldChange";
 import useRegistration from "../../hooks/auth-hook/useRegistration";
 
-import {routePath} from "../../utils/constants";
+import {routePath} from "../../utils/constants.js";
 
-import styles from "./register.module.css";
-import {Logo, Microphone} from "../../components/index.js";
-
+// register component
 const Register = () => {
   const {onFieldChange, state} = useFieldChange();
   const {onRegister, result} = useRegistration();
+
+  // jsx
   return (
-    <section className={styles.section}>
-      <div className={styles.center}>
-        <div className={styles.form}>
-          <div className={styles.form_}>
-            <Link to={routePath.landpage}>
-              <img src={Logo} alt="" className={styles.logo}/>
-            </Link>
-            <h3 className={styles.h3}>Registration Form</h3>
-            <h3 className={styles.h4}>SignUp to Begin your Lessons</h3>
-            <Form
-              className="login-form"
-              onFinish={onRegister}
-              layout="vertical"
-              labelCol={{
-                span: 24,
-              }}
-              wrapperCol={{
-                span: 24,
-              }}
-              initialValues={{
-                remember: true,
-              }}
-              autoComplete="on"
-              fields={[
-                {
-                  name: "email",
-                  value: state.request?.email,
-                },
-                {
-                  name: "firstname",
-                  value: state.request?.firstname,
-                },
-                {
-                  name: "lastname",
-                  value: state.request?.lastname,
-                },
-                {
-                  name: "othername",
-                  value: state.request?.othername,
-                },
-                {
-                  name: "phoneNumber",
-                  value: state.request?.phoneNumber,
-                },
-                {
-                  name: "password",
-                  value: state.request?.password,
-                }
-              ]}
-            >
-              <Form.Item
-                label="Firstname"
-                name="firstname"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please input your firstname!",
-                  },
-                  {
-                    type: "text",
-                    message: "firstname cannot be empty",
-                  },
-                ]}
-              >
-                <Input
-                  onChange={(e) => {
-                    onFieldChange("firstname", e.target.value);
-                  }}
-                />
-              </Form.Item>
+    <section className="form-container">
+      <form onSubmit={onRegister}>
+        <h3>register now</h3>
 
-              <Form.Item
-                label="Lastname"
-                name="lastname"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please input your lastname!",
-                  },
-                  {
-                    type: "text",
-                    message: "invalid lastname",
-                  },
-                ]}
-              >
-                <Input
-                  onChange={(e) => {
-                    onFieldChange("lastname", e.target.value);
-                  }}
-                />
-              </Form.Item>
+        {/*first name input*/}
+        <p>your first name <span>*</span></p>
+        <input
+          type="text"
+          name="firstname"
+          placeholder="enter your firstname"
+          required
+          value={state.request?.firstname || ""}
+          maxLength="50"
+          className="box"
+          onChange={(e) => {
+            onFieldChange("firstname", e.target.value)
+          }}
+        />
+        {/* last name input*/}
+        <p>your last name <span>*</span></p>
+        <input
+          type="text"
+          name="lastname"
+          placeholder="enter your name"
+          required
+          value={state.request?.lastname || ""}
+          maxLength="50"
+          className="box"
+          onChange={(e) => {
+            onFieldChange("lastname", e.target.value)
+          }}
+        />
 
-              <Form.Item
-                label="Othername"
-                name="othername"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please input your othername!",
-                  },
-                  {
-                    type: "text",
-                    message: "invalid othername",
-                  },
-                ]}
-              >
-                <Input
-                  onChange={(e) => {
-                    onFieldChange("othername", e.target.value);
-                  }}
-                />
-              </Form.Item>
+        {/* other name input*/}
+        <p>your other name <span>*</span></p>
+        <input
+          type="text"
+          name="othername"
+          placeholder="other name"
+          required
+          value={state.request?.othername || ""}
+          maxLength="50"
+          className="box"
+          onChange={(e) => {
+            onFieldChange("othername", e.target.value)
+          }}
+        />
 
-              <Form.Item
-                label="Email"
-                name="email"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please input your email!",
-                  },
-                  {
-                    type: "email",
-                    message: "invalid email",
-                  },
-                ]}
-              >
-                <Input
-                  onChange={(e) => {
-                    onFieldChange("email", e.target.value);
-                  }}
-                />
-              </Form.Item>
+        {/* email input */}
+        <p>your email <span>*</span></p>
+        <input
+          type="email"
+          name="email"
+          value={state.request?.email || ""}
+          placeholder="enter your email"
+          required maxLength="50"
+          className="box"
+          onChange={(e) => {
+            onFieldChange("email", e.target.value)
+          }}
+        />
 
-              <Form.Item
-                label="Number"
-                name="phoneNumber"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please input your telephone number ",
-                  },
-                  {
-                    type: "text",
-                    message: "invalid phone number",
-                  },
-                ]}
-              >
-                <Input
-                  onChange={(e) => {
-                    onFieldChange("phoneNumber", e.target.value);
-                  }}
-                />
-              </Form.Item>
+        {/* phone number input */}
+        <p>your number <span>*</span></p>
+        <input
+          type="number"
+          name="number"
+          value={state.request?.phoneNumber || ""}
+          placeholder="enter your ,mobile number"
+          required maxLength="50"
+          className="box"
+          onChange={(e) => {
+            onFieldChange("phoneNumber", e.target.value)
+          }}
+        />
 
-              <Form.Item
-                label="Password"
-                name="password"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please input your password!",
-                  },
-                ]}
-              >
-                <Input.Password
-                  onChange={(e) => {
-                    onFieldChange("password", e.target.value);
-                  }}
-                />
-              </Form.Item>
+        {/*password input*/}
+        <p>your password <span>*</span></p>
+        <input
+          type="password"
+          name="pass"
+          value={state.request?.password || ""}
+          placeholder="enter your password"
+          required maxLength="20"
+          className="box"
+          onChange={(e) => {
+            onFieldChange("password", e.target.value)
+          }}
+        />
 
-              <Form.Item
-                wrapperCol={{
-                  offset: 8,
-                  span: 16,
-                }}
-              >
-                <Button
-                  type="primary"
-                  htmlType="submit"
-                  loading={result.isLoading}
+        {/*confirm password input*/}
+        <p>confirm password <span>*</span></p>
+        <input
+          type="password"
+          name="c_pass"
+          value={state.request?.confirm_password || ""}
+          placeholder="confirm your password"
+          required maxLength="20"
+          className="box"
+          onChange={(e) => {
+            onFieldChange("confirm_password", e.target.value)
+          }}
+        />
 
-                >
-                  Register
-                </Button>
-              </Form.Item>
+        {/*submit button*/}
+        <button
+          type="submit"
+          value="register new"
+          name="submit"
+          className="btn">
+          {result.isLoading ? "Registering..." : "Register"}
+        </button>
 
-            </Form>
-            <p>Already have an account?</p>
-            <Link to={routePath.auth.login} id={styles.btn}>
-              Login
-            </Link>
-          </div>
-        </div>
-        <div className={styles.form__}></div>
-        <img className={styles.microphone} src={Microphone} alt=""/>
-      </div>
+        <p style={{textAlign: "center"}}>Already have an account?{" "}
+          <NavLink to={routePath.auth.login} style={{textDecoration: "none", width: "100%"}}>
+            Login
+          </NavLink>
+        </p>
+      </form>
+
     </section>
   );
 };
+
 export default Register;

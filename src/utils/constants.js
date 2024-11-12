@@ -2,8 +2,9 @@ export const overLay = document.getElementById("overlays");
 
 export const routePath = {
   landpage: "/",
+  dashboard: "dashboard",
   "about-us": "about-us",
-  contact: "contact",
+  "contact-us": "contact-us",
 
   auth: {
     login: "/login",
@@ -19,9 +20,10 @@ export const routePath = {
   },
 
   profile: {
-    index: "/profile",
+    index: "profile",
+    update: "update-profile",
     settings: {
-      update: "update-profile"
+
     },
     password: {
       "change-password": "change-password",

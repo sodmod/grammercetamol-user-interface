@@ -19,6 +19,8 @@ const useLogin = () => {
 
   const onLogin = useCallback(async() => {
     try {
+
+      // email api call
       const response = await mutate({
         ...state,
         postUrl: endpoints.auth.login,
@@ -29,6 +31,7 @@ const useLogin = () => {
         },
       });
 
+      // response ok
       if(!response.error) {
         setCookie("*", `${response?.data?.data?.loggedIn}`, time.auth.loggedIn);
         setLocalStorage(
@@ -63,6 +66,7 @@ const useLogin = () => {
       }
 
     }catch(error) {
+      console.log(error);
       console.log("Something went rong");
     }
   }, [dispatch, mutate, navigate, state]);

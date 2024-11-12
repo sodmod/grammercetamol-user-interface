@@ -8,7 +8,7 @@ import {Spinner} from "./components/spinner/Spinner";
 
 import {ThemeProvider} from "react-bootstrap";
 
-function App(){
+const App = () => {
   return (
     <ThemeProvider breakpoints={['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs']}
                    minBreakpoint="xxs">
@@ -20,6 +20,5 @@ function App(){
     </ThemeProvider>
   );
 }
-
 
 export default App;

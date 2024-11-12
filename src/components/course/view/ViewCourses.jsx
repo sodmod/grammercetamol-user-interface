@@ -5,7 +5,7 @@ import EachCourse from "../each/EachCourse.jsx";
 
 
 const ViewCourses = ({data, loading, buttonText, to}) => {
-  return <div className="text-center">
+  return <div className="text-center overflow-y-scroll h-100 ">
     {loading ? (
       <Spinner2/>
     ) : Array.isArray(data) && data.length > 0 ? (

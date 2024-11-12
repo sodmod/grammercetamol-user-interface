@@ -1,6 +1,6 @@
 import {useCallback} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {setAllAppKeys} from "../../config/app.slice";
+import {setAllAppKeys} from "../../config/index.js";
 
 const useFieldChange = () => {
   const dispatch = useDispatch();
