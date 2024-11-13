@@ -27,7 +27,6 @@ const Login = () => {
           value={state.request?.email || ""}
           placeholder="enter your email"
           required
-          maxLength="50"
           className="box"
           onChange={(e) => {
             onFieldChange("email", e.target.value)
@@ -42,7 +41,6 @@ const Login = () => {
           value={state.request?.password || ""}
           placeholder="enter your password"
           required
-          maxLength="20"
           className="box"
           onChange={(e) => {
             onFieldChange("password", e.target.value)
