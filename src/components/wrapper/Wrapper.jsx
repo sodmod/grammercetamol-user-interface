@@ -6,17 +6,20 @@ import {Outlet} from "react-router-dom";
 import Header from "../header/Header.jsx";
 import SideBar from "../sidebar/Sidebar.jsx";
 import Footer from "../footer/Footer.jsx";
+import {ProtectedRoute} from "../../route/protected-routes.config.jsx";
 
 
 // app container
 const Wrapper = () => {
 
-  return <Fragment>
-    <Header/>
-    <SideBar/>
-    <Outlet/>
-    <Footer/>
-  </Fragment>
+  return (<Fragment>
+    <ProtectedRoute>
+      <Header/>
+      <SideBar/>
+      <Outlet/>
+      <Footer/>
+    </ProtectedRoute>
+  </Fragment>)
 
 
 }

@@ -28,6 +28,7 @@ export const baseQueryWithReAuth =
 export const baseQuery = fetchBaseQuery({
   baseUrl,
   prepareHeaders: (headers) => {
+    console.log(getCookie("***"))
     if(getCookie("***") && getCookie("***").length > 0) {
       headers.set("Authorization", getCookie("***"));
     }
@@ -48,7 +49,7 @@ export const apiConfiguration = createApi({
           url: state.getUrl,
         };
       },
-      providesTags: ["getData"],
+      // providesTags: ["getData"],
     }),
     refreshToken: builder.mutation({
       query: () => {
@@ -89,6 +90,12 @@ export const apiConfiguration = createApi({
         };
       },
     }),
+    invalidatesTags: (_result, _error, arg) => [
+      {
+        type: "getData",
+        id: arg.id,
+      },
+    ],
   }),
 });
 

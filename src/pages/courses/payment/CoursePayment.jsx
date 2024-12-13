@@ -3,7 +3,7 @@ import {endpoints} from "../../../store/endpoints.js";
 import {NavLink, useParams} from "react-router-dom";
 import Button from "../../../components/custom-tags/button/Button.jsx";
 import {useEffect, useMemo, useState} from "react";
-import {getSpecificKey} from "../../../store/storage.js";
+import {getSpecificKeyFromLocalStorage} from "../../../store/storage.js";
 import {usePaystackPayment} from "react-paystack";
 import {Container} from "react-bootstrap";
 import Card from "react-bootstrap/Card";
@@ -18,7 +18,7 @@ const CoursePayment = () => {
 
   useMutate({postUrl: "", formMethod: "POST"})
   // Retrieve the email from storage
-  const {data: email} = getSpecificKey("username", "**");
+  const {data: email} = getSpecificKeyFromLocalStorage("username", "**");
 
   // on rendering the page, fetch the transaction reference and course details
   const {data, loading} = useFetchData(`${endpoints.transaction.paystack.init}${courseId}`)

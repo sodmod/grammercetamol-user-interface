@@ -56,8 +56,16 @@ export function userInfoToLowerCase(data){
   };
 }
 
-export function getSpecificKey(data, key){
+//
+export function getSpecificKeyFromLocalStorage(data, key){
   const parsedString = JSON.parse(getLocalStorage(key))
+  return {
+    data: parsedString?.[data]
+  }
+}
+
+export function getSpecificKeyFromCookieStorage(data, key){
+  const parsedString = JSON.parse(getCookie(key))
   return {
     data: parsedString?.[data]
   }

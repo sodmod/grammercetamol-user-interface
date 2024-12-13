@@ -1,4 +1,11 @@
 import {Fragment} from "react";
+import {NavLink, useParams} from "react-router-dom";
+
+import {endpoints} from "../../../store/endpoints.js";
+import useFetchData from "../../../hooks/useFetchData.js";
+import {formatUploadedDate} from "../../../utils/customConverter.js";
+import {Spinner2} from "../../../components/spinner/Spinner.jsx";
+import ThumbnailWrapper from "../../../components/thumbnails/ThumbnailWrapper.jsx";
 
 
 // const Details = () => {
@@ -116,90 +123,66 @@ import {Fragment} from "react";
 //   );
 // };
 
+// details component
 const Details = () => {
 
+  // const [whiteListed, setWhiteListed] = useState(false);
+
+  const {courseId} = useParams();
+  const apiGetCourseDetail = endpoints.courses.courses
+  // const whitelist = `${endpoints.courses.whiteList}/${courseId}`;
+  // const unWhiteList = `${endpoints.courses.unWhiteList}/${courseId}`;
+  const {data, loading} = useFetchData(`${apiGetCourseDetail}/${courseId}`);
+
   return <Fragment>
-    <section className="playlist-details">
+    {loading ? <Spinner2/> :
+      <>
+        <section className="playlist-details">
+          <h1 className="heading">playlist details</h1>
 
-      <h1 className="heading">playlist details</h1>
+          <div className="row">
 
-      <div className="row">
+            <div className="column">
+              <div className="save-playlist">
+                <button type="submit"><i className="far fa-bookmark"></i> <span>save playlist</span></button>
+              </div>
 
-        <div className="column">
-          <form action="" method="post" className="save-playlist">
-            <button type="submit"><i className="far fa-bookmark"></i> <span>save playlist</span></button>
-          </form>
+              <div className="thumb">
+                <img src={data.thumbnail_url} alt=""/>
+                <span>{data.videoIds.length} videos</span>
+              </div>
+            </div>
+            <div className="column">
+              <div className="tutor">
+                <img src="images/pic-2.jpg" alt=""/>
+                <div>
+                  <h3>{`${data.authorDto.firstName} ${data.authorDto.lastName}`}</h3>
+                  <span>{formatUploadedDate(data.localDateTime)}</span>
+                </div>
+              </div>
 
-          <div className="thumb">
-            <img src="images/thumb-1.png" alt=""/>
-            <span>10 videos</span>
-          </div>
-        </div>
-        <div className="column">
-          <div className="tutor">
-            <img src="images/pic-2.jpg" alt=""/>
-            <div>
-              <h3>john deo</h3>
-              <span>21-10-2022</span>
+              <div className="details">
+                <h3>{data.courseName}</h3>
+                <p>{data.summary}.</p>
+                <NavLink to={""} className="inline-btn">view profile</NavLink>
+              </div>
             </div>
           </div>
+        </section>
 
-          <div className="details">
-            <h3>complete HTML tutorial</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum minus reiciendis, error sunt veritatis
-              exercitationem deserunt velit doloribus itaque voluptate.</p>
-            <a href="teacher_profile.html" className="inline-btn">view profile</a>
+        <section className="playlist-videos">
+          <h1 className="heading">playlist videos</h1>
+          <div className="box-container">
+            {Array.isArray(data.videoIds) && data.videoIds.map((dat, index) => (
+              <NavLink key={index} className="box">
+                <i className="fas fa-play"></i>
+                <ThumbnailWrapper url={dat.url}/>
+                <h3>{dat.subTopic}</h3>
+              </NavLink>
+            ))}
           </div>
-        </div>
-      </div>
-
-    </section>
-
-    <section className="playlist-videos">
-
-      <h1 className="heading">playlist videos</h1>
-
-      <div className="box-container">
-
-        <a className="box" href="watch-video.html">
-          <i className="fas fa-play"></i>
-          <img src="images/post-1-1.png" alt=""/>
-          <h3>complete HTML tutorial (part 01)</h3>
-        </a>
-
-        <a className="box" href="watch-video.html">
-          <i className="fas fa-play"></i>
-          <img src="images/post-1-2.png" alt=""/>
-          <h3>complete HTML tutorial (part 02)</h3>
-        </a>
-
-        <a className="box" href="watch-video.html">
-          <i className="fas fa-play"></i>
-          <img src="images/post-1-3.png" alt=""/>
-          <h3>complete HTML tutorial (part 03)</h3>
-        </a>
-
-        <a className="box" href="watch-video.html">
-          <i className="fas fa-play"></i>
-          <img src="images/post-1-4.png" alt=""/>
-          <h3>complete HTML tutorial (part 04)</h3>
-        </a>
-
-        <a className="box" href="watch-video.html">
-          <i className="fas fa-play"></i>
-          <img src="images/post-1-5.png" alt=""/>
-          <h3>complete HTML tutorial (part 05)</h3>
-        </a>
-
-        <a className="box" href="watch-video.html">
-          <i className="fas fa-play"></i>
-          <img src="images/post-1-6.png" alt=""/>
-          <h3>complete HTML tutorial (part 06)</h3>
-        </a>
-
-      </div>
-
-    </section>
+        </section>
+      </>}
   </Fragment>
 };
 

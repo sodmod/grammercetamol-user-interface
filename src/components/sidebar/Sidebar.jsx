@@ -1,12 +1,16 @@
 import {NavLink} from "react-router-dom";
 import {routePath} from "../../utils/constants.js";
 import {useState} from "react";
+import {getSpecificKeyFromCookieStorage} from "../../store/storage.js";
 
 
 // sidebar component
 const SideBar = () => {
 
   const[accordion, setAccordion] = useState(false);
+  const {data: name} = getSpecificKeyFromCookieStorage("lastname", "**");
+
+
 
 
   // return jsx
@@ -17,9 +21,9 @@ const SideBar = () => {
     </div>
 
     <div className="profile">
-      <img src="images/pic-1.jpg" className="image" alt=""/>
-      <h3 className="name">shaikh anas</h3>
-      <p className="role">studen</p>
+      {/*<img src="images/pic-1.jpg" className="image" alt=""/>*/}
+      <h3 className="name">{name}</h3>
+      <p className="role">student</p>
       <NavLink to={routePath.profile.index} className="btn">view profile</NavLink>
     </div>
 
@@ -27,7 +31,9 @@ const SideBar = () => {
       <NavLink to={routePath.dashboard}>
         <i className="fas fa-home"></i><span>Home</span>
       </NavLink>
-      <NavLink className="accordion" onClick={()=> {setAccordion(!accordion)}}>
+      <a className="accordion" onClick={() => {
+        setAccordion(!accordion)
+      }}>
         <i className="fas fa-graduation-cap" style={{paddingBottom: "15px"}}></i><span>courses</span>
         {accordion && <div className="panel">
           <NavLink to={routePath.course.courses}>
@@ -39,9 +45,8 @@ const SideBar = () => {
           <NavLink to={`${routePath.course.courses}/${routePath.course["whitelisted-course"]}`}>
             Saved Courses
           </NavLink>
-        </div>
-        }
-      </NavLink>
+        </div>}
+      </a>
       <NavLink to={routePath["about-us"]}>
         <i className="fas fa-question"></i><span>about</span>
       </NavLink>

@@ -30,7 +30,8 @@ export const endpoints = {
   settings: {
     profile: `${settings}profile`,
     "update-profile": `${settings}profile-update`,
-    "change-password": `${settings}change-password`
+    "change-password": `${settings}change-password`,
+    "change_profile_pics":`${settings}profile_pics`,
   },
   transaction: {
     paystack: {

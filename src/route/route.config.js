@@ -64,14 +64,14 @@ export const router = createBrowserRouter([
             Component: Whitelisted,
           },
           {
-            path: routePath.course.view,
+            path: `${routePath.course.view}:courseId`,
             Component: Details,
           }
         ]
       },
 
       // {
-      //   index: true,
+      //   index: true, 
       //   Component: Overview
       // },
       // {
