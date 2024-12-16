@@ -1,107 +1,53 @@
-import {useState} from "react";
-import {getCookie} from "../../store/storage";
+import PropTypes from "prop-types";
+import {useEffect, useState} from "react";
 
+// jsx header
+const Header = ({handleSideButtonHandler, prevState}) => {
+  let darkMode = localStorage.getItem('dark-mode');
 
+  const [activate, setIsActivate] = useState({
+    isProfileActive: false,
+    activateDarkMode: false,
+    enableDarkMode: false,
+  })
 
-// const Header = () => {
-//   const [clicked, setClicked] = useState(false);
-//
-//   const handleClick = () => {
-//     setClicked((previous) => !previous);
-//   };
-//
-//   const isClicked = clicked
-//     ? `${styles.navmenu} ${styles.active}`
-//     : `${styles.navmenu}`;
-//
-//
-//   let isLoggedIn = false;
-//   if(getCookie("*") && getCookie("*").length > 0) {
-//     isLoggedIn = true;
-//   }
-//
-//   const icons = clicked ? "fa-solid fa-xmark" : "fa-solid fa-bars";
-//
-//   return (
-//     <nav className={styles.navitems}>
-//       <div className={styles.logo}>
-//         <NavLink to={routePath.landpage}>
-//           <img src={Logo} alt=""/>
-//         </NavLink>
-//       </div>
-//       <div className={styles.hambuger} onClick={handleClick}>
-//         <Icons icons={icons}/>
-//       </div>
-//       <UL className={isClicked}>
-//         {navbarContent.map((navbar, key) => (
-//           <Lists key={key}>
-//             <NavLink
-//               onClick={handleClick}
-//               to={navbar.to}
-//               className={({isActive}) => (isActive ? styles.active : undefined)}
-//               end
-//             >
-//               {navbar.dir}
-//             </NavLink>
-//           </Lists>
-//         ))}
-//         <Button className={styles.btn} onClick={handleClick}>What do you want to learn?</Button>
-//         <Lists>
-//           {!isLoggedIn ? (
-//             <NavLink
-//               to={routePath.auth.login}
-//               className={({isActive}) =>
-//                 isActive ? styles.active : undefined
-//               }
-//               end
-//             >
-//               Sign In
-//             </NavLink>
-//           ) : (
-//             <NavLink to={`${routePath.profile.index}`}>
-//               {/* <Button className={styles.btn}>My ProfileSettings</Button>
-//                */}
-//               <div
-//                 onClick={handleClick}
-//                 className=""
-//                 style={{
-//                   width: "40px",
-//                   height: "40px",
-//                   display: "flex",
-//                   justifyContent: "center",
-//                   alignItems: "center",
-//                 }}
-//               >
-//                 <Icons icons={"fa-solid fa-user"}/>
-//               </div>
-//             </NavLink>
-//           )}
-//         </Lists>
-//       </UL>
-//     </nav>
-//   );
-// };
+  useEffect(() => {
+    if(darkMode === 'enable') {
+      document.body.classList.add('dark')
+      localStorage.setItem('dark-mode', 'enable')
+    }
+  }, [darkMode]);
 
-const Header = () => {
-  const [clicked, setClicked] = useState(false);
-
-  const handleClick = () => {
-    setClicked((previous) => !previous);
-  };
-
-
-
-  let isLoggedIn = false;
-  if(getCookie("*") && getCookie("*").length > 0) {
-    isLoggedIn = true;
+  // Single function to handle updates
+  function toggleActivate(key){
+    setIsActivate((prev) => ({
+      ...prev,
+      [key]: !prev[key],
+      // Toggle the specified key dynamically
+      // ...Object.keys(prev).reduce(
+      //   (acc, k) => (k !== key ? { ...acc, [k]: false } : acc), // Set other keys to false
+      //   {}
+      // ),
+    }));
   }
 
-  const icons = clicked ? "fa-solid fa-xmark" : "fa-solid fa-bars";
+  function darkModeEnabler(){
+    toggleActivate("enableDarkMode")
+
+    if(!activate.enableDarkMode && darkMode === "disabled") {
+      document.body.classList.add('dark')
+      localStorage.setItem('dark-mode', 'enable')
+    }else {
+      document.body.classList.remove('dark')
+      localStorage.setItem('dark-mode', 'disabled')
+    }
+
+  }
 
   return (
     <header className="header">
       <section className="flex">
-        <a href="#" className="logo">Educa.</a>
+        <a href="#" className="logo">Grammercetamol</a>
 
         <form action="search.html" method="post" className="search-form">
           <input type="text" name="search_box" required placeholder="search courses..." maxLength="100"/>
@@ -109,13 +55,23 @@ const Header = () => {
         </form>
 
         <div className="icons">
-          <div id="menu-btn" className="fas fa-bars"></div>
+          <div id="menu-btn" className="fas fa-bars" onClick={() => {
+            handleSideButtonHandler(!prevState)
+          }}></div>
           <div id="search-btn" className="fas fa-search"></div>
-          <div id="user-btn" className="fas fa-user"></div>
-          <div id="toggle-btn" className="fas fa-sun"></div>
+          <div id="user-btn" className="fas fa-user" onClick={() => (
+            toggleActivate("isProfileActive")
+
+          )}></div>
+          <div id="toggle-btn" className={`fas ${activate.activateDarkMode ? "fa-moon" : "fa-sun"}`}
+               onClick={() => {
+                 darkModeEnabler()
+                 toggleActivate("activateDarkMode")
+               }}
+          ></div>
         </div>
 
-        <div className="profile">
+        <div className={`profile ${activate.isProfileActive ? "active" : ""}`}>
           <img src="" className="image" alt=""/>
           <h3 className="name">shaikh anas</h3>
           <p className="role">studen</p>
@@ -132,3 +88,8 @@ const Header = () => {
   );
 };
 export default Header;
+
+Header.propTypes = {
+  handleSideButtonHandler: PropTypes.func,
+  prevState: PropTypes.bool,
+}

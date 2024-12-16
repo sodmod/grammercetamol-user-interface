@@ -11,8 +11,6 @@ const SideBar = () => {
   const {data: name} = getSpecificKeyFromCookieStorage("lastname", "**");
 
 
-
-
   // return jsx
   return <div className="side-bar">
 

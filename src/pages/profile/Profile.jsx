@@ -3,8 +3,6 @@ import {NavLink} from "react-router-dom";
 import {routePath} from "../../utils/constants.js";
 import useFetchData from "../../hooks/useFetchData.js";
 import {endpoints} from "../../store/endpoints.js";
-import {useMutateMutation} from "../../config/index.js";
-import useMutate from "../../hooks/useMutate.js";
 import useProfileUpdate from "../../hooks/useProfileUpdate.js";
 
 const Profile = ()=>{

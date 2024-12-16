@@ -1,5 +1,5 @@
 // inbuilt libraries
-import {Fragment} from "react";
+import {Fragment, useState} from "react";
 import {Outlet} from "react-router-dom";
 
 // custom components
@@ -8,19 +8,21 @@ import SideBar from "../sidebar/Sidebar.jsx";
 import Footer from "../footer/Footer.jsx";
 import {ProtectedRoute} from "../../route/protected-routes.config.jsx";
 
-
 // app container
 const Wrapper = () => {
 
+  const [showSideBar, setShowSideBar] = useState(true);
+
   return (<Fragment>
+
     <ProtectedRoute>
-      <Header/>
-      <SideBar/>
+      <Header handleSideButtonHandler={setShowSideBar} prevState={showSideBar}/>
+
+      {showSideBar && <SideBar/>}
       <Outlet/>
       <Footer/>
     </ProtectedRoute>
   </Fragment>)
-
 
 }
 
