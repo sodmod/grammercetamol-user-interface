@@ -67,6 +67,7 @@ const useLogin = () => {
           response.data?.data?.refreshToken,
           time.auth["refresh-token"]
         );
+        setCookie("profile_pics", response.data?.data?.profilePics, time.auth['token-time']);
 
         // change state object
         dispatch(setAllAppKeys({

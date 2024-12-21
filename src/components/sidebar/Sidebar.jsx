@@ -1,7 +1,7 @@
 import {NavLink} from "react-router-dom";
 import {routePath} from "../../utils/constants.js";
 import {useState} from "react";
-import {getSpecificKeyFromCookieStorage} from "../../store/storage.js";
+import {getCookie, getSpecificKeyFromCookieStorage} from "../../store/storage.js";
 
 
 // sidebar component
@@ -10,6 +10,7 @@ const SideBar = () => {
   const[accordion, setAccordion] = useState(false);
   const {data: name} = getSpecificKeyFromCookieStorage("lastname", "**");
 
+  const profilePics = getCookie("profile_pics");
 
   // return jsx
   return <div className="side-bar">
@@ -19,7 +20,7 @@ const SideBar = () => {
     </div>
 
     <div className="profile">
-      {/*<img src="images/pic-1.jpg" className="image" alt=""/>*/}
+      <img src={profilePics ? profilePics : ""} className="image" alt=""/>
       <h3 className="name">{name}</h3>
       <p className="role">student</p>
       <NavLink to={routePath.profile.index} className="btn">view profile</NavLink>

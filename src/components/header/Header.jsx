@@ -1,5 +1,8 @@
 import PropTypes from "prop-types";
 import {useEffect, useState} from "react";
+import {getCookie} from "../../store/storage.js";
+import {NavLink} from "react-router-dom";
+import {routePath} from "../../utils/constants.js";
 
 // jsx header
 const Header = ({handleSideButtonHandler, prevState}) => {
@@ -44,6 +47,9 @@ const Header = ({handleSideButtonHandler, prevState}) => {
 
   }
 
+  // get profile pics
+  const profilePics = getCookie("profile_pics");
+
   return (
     <header className="header">
       <section className="flex">
@@ -72,14 +78,14 @@ const Header = ({handleSideButtonHandler, prevState}) => {
         </div>
 
         <div className={`profile ${activate.isProfileActive ? "active" : ""}`}>
-          <img src="" className="image" alt=""/>
+          <img src={profilePics ? profilePics : ""} className="image" alt=""/>
           <h3 className="name">shaikh anas</h3>
-          <p className="role">studen</p>
-          <a href="" className="btn">view profile</a>
-          <div className="flex-btn">
-            <a href="" className="option-btn">login</a>
-            <a href="" className="option-btn">register</a>
-          </div>
+          <p className="role">student</p>
+          <NavLink to={routePath.profile.index} className="btn">view profile</NavLink>
+          {/*<div className="flex-btn">*/}
+          {/*  <a href="" className="option-btn">login</a>*/}
+          {/*  <a href="" className="option-btn">register</a>*/}
+          {/*</div>*/}
         </div>
 
       </section>
