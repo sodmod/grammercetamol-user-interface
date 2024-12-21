@@ -4,6 +4,7 @@ import {routePath} from "../../utils/constants.js";
 import useFetchData from "../../hooks/useFetchData.js";
 import {endpoints} from "../../store/endpoints.js";
 import useProfileUpdate from "../../hooks/useProfileUpdate.js";
+import {getCookie} from "../../store/storage.js";
 
 const Profile = ()=>{
 
@@ -47,6 +48,9 @@ const Profile = ()=>{
     onSubmit({fileDetails: file})
   }
 
+  // get profile pics
+  const profilePics = getCookie("profile_pics");
+
   // return jsx
   return <Fragment>
     <section className="user-profile">
@@ -56,7 +60,7 @@ const Profile = ()=>{
       <div className="info">
 
         <div className="user">
-          <img src={data?.usersProfile} alt=""/>
+          <img src={profilePics} alt=""/>
           <h3>{`${profileDTO?.firstName} ${profileDTO?.lastName} ${profileDTO?.otherName}`}</h3>
           <p>student</p>
           <NavLink to={routePath.profile.update} className="inline-btn me-3">update your profile</NavLink>
