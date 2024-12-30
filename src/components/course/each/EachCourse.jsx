@@ -1,5 +1,7 @@
 import PropTypes from "prop-types";
 import {Fragment} from "react";
+import {NavLink} from "react-router-dom";
+import {formatUploadedDate} from "../../../utils/customConverter.js";
 
 
 // const EachCourse = ({course, to, buttonText}) => {
@@ -42,168 +44,50 @@ import {Fragment} from "react";
 // };
 
 
-const EachCourse = () => {
+const EachCourse = ({data, to }) => {
 
   return <Fragment>
-
     <div className="box">
       <div className="tutor">
-        <img src="images/pic-2.jpg" alt=""/>
+        {/*todo: implement tutor image here*/}
+        <img src={data.authorDto.authorProfile} alt=""/>
         <div className="info">
-          <h3>john deo</h3>
-          <span>21-10-2022</span>
+          <h3>`{data.authorDto.firstName} {data.authorDto.lastName}`</h3>
+          <span>{formatUploadedDate(data.uploadedDate)}</span>
         </div>
       </div>
       <div className="thumb">
-        <img src="images/thumb-1.png" alt=""/>
-        <span>10 videos</span>
+        <img src={data.thumbnail_url} alt=""/>
+        <span>{data.lesson} videos</span>
       </div>
-      <h3 className="title">complete HTML tutorial</h3>
-      <a href="playlist.html" className="inline-btn">view playlist</a>
-    </div>
-
-    <div className="box">
-      <div className="tutor">
-        <img src="images/pic-3.jpg" alt=""/>
-        <div className="info">
-          <h3>john deo</h3>
-          <span>21-10-2022</span>
-        </div>
-      </div>
-      <div className="thumb">
-        <img src="images/thumb-2.png" alt=""/>
-        <span>10 videos</span>
-      </div>
-      <h3 className="title">complete CSS tutorial</h3>
-      <a href="playlist.html" className="inline-btn">view playlist</a>
-    </div>
-
-    <div className="box">
-      <div className="tutor">
-        <img src="images/pic-4.jpg" alt=""/>
-        <div className="info">
-          <h3>john deo</h3>
-          <span>21-10-2022</span>
-        </div>
-      </div>
-      <div className="thumb">
-        <img src="images/thumb-3.png" alt=""/>
-        <span>10 videos</span>
-      </div>
-      <h3 className="title">complete JS tutorial</h3>
-      <a href="playlist.html" className="inline-btn">view playlist</a>
-    </div>
-
-    <div className="box">
-      <div className="tutor">
-        <img src="images/pic-5.jpg" alt=""/>
-        <div className="info">
-          <h3>john deo</h3>
-          <span>21-10-2022</span>
-        </div>
-      </div>
-      <div className="thumb">
-        <img src="images/thumb-4.png" alt=""/>
-        <span>10 videos</span>
-      </div>
-      <h3 className="title">complete Boostrap tutorial</h3>
-      <a href="playlist.html" className="inline-btn">view playlist</a>
-    </div>
-
-    <div className="box">
-      <div className="tutor">
-        <img src="images/pic-6.jpg" alt=""/>
-        <div className="info">
-          <h3>john deo</h3>
-          <span>21-10-2022</span>
-        </div>
-      </div>
-      <div className="thumb">
-        <img src="images/thumb-5.png" alt=""/>
-        <span>10 videos</span>
-      </div>
-      <h3 className="title">complete JQuery tutorial</h3>
-      <a href="playlist.html" className="inline-btn">view playlist</a>
-    </div>
-
-    <div className="box">
-      <div className="tutor">
-        <img src="images/pic-7.jpg" alt=""/>
-        <div className="info">
-          <h3>john deo</h3>
-          <span>21-10-2022</span>
-        </div>
-      </div>
-      <div className="thumb">
-        <img src="images/thumb-6.png" alt=""/>
-        <span>10 videos</span>
-      </div>
-      <h3 className="title">complete SASS tutorial</h3>
-      <a href="playlist.html" className="inline-btn">view playlist</a>
-    </div>
-
-    <div className="box">
-      <div className="tutor">
-        <img src="images/pic-8.jpg" alt=""/>
-        <div className="info">
-          <h3>john deo</h3>
-          <span>21-10-2022</span>
-        </div>
-      </div>
-      <div className="thumb">
-        <img src="images/thumb-7.png" alt=""/>
-        <span>10 videos</span>
-      </div>
-      <h3 className="title">complete PHP tutorial</h3>
-      <a href="playlist.html" className="inline-btn">view playlist</a>
-    </div>
-
-    <div className="box">
-      <div className="tutor">
-        <img src="images/pic-9.jpg" alt=""/>
-        <div className="info">
-          <h3>john deo</h3>
-          <span>21-10-2022</span>
-        </div>
-      </div>
-      <div className="thumb">
-        <img src="images/thumb-8.png" alt=""/>
-        <span>10 videos</span>
-      </div>
-      <h3 className="title">complete MySQL tutorial</h3>
-      <a href="playlist.html" className="inline-btn">view playlist</a>
-    </div>
-
-    <div className="box">
-      <div className="tutor">
-        <img src="images/pic-1.jpg" alt=""/>
-        <div className="info">
-          <h3>john deo</h3>
-          <span>21-10-2022</span>
-        </div>
-      </div>
-      <div className="thumb">
-        <img src="images/thumb-9.png" alt=""/>
-        <span>10 videos</span>
-      </div>
-      <h3 className="title">complete react tutorial</h3>
-      <a href="playlist.html" className="inline-btn">view playlist</a>
+      <h3 className="title">{data.courseTitle}</h3>
+      <NavLink to={to} className="inline-btn">view playlist</NavLink>
     </div>
   </Fragment>
 };
 
 
 EachCourse.propTypes = {
-  course: PropTypes.shape({
+  data: PropTypes.shape({
     thumbnail_url: PropTypes.string.isRequired,
     courseId: PropTypes.string.isRequired,
+    uploadedDate: PropTypes.array,
     lesson: PropTypes.number.isRequired,
-    courseName: PropTypes.string.isRequired,
-    authorDto: PropTypes.object.isRequired,
-    priceDTO: PropTypes.object,
+    courseTitle: PropTypes.string.isRequired,
+    authorDto: PropTypes.shape({
+      authorProfile: PropTypes.string,
+      firstName: PropTypes.string,
+      lastName: PropTypes.string,
+      otherName: Promise.string,
+    }).isRequired,
+    // authorDto: PropTypes.object.isRequired,
+    priceDTO: PropTypes.shape({
+      currency: PropTypes.string,
+      price: PropTypes.number,
+    }),
   }).isRequired,
   to: PropTypes.string.isRequired,
-  buttonText: PropTypes.string.isRequired,
+  // buttonText: PropTypes.string.isRequired,
 };
 
 export default EachCourse;

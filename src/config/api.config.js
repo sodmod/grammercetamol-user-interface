@@ -4,10 +4,10 @@ import {setAppKey} from "./app.slice";
 import {endpoints} from "../store/endpoints";
 import {getCookie} from "../store/storage";
 
-export const baseUrl = import.meta.env.VITE_APP_API_BASE_URL;
+// export const baseUrl = import.meta.env.VITE_APP_API_BASE_URL;
 // const online = "";
-// export const local = "http://localhost:7009/api/";
-// export const baseUrl = local;
+export const local = "http://localhost:7009/api/";
+export const baseUrl = local;
 
 export const baseQueryWithReAuth =
   (baseQuery) => async(args, api, extraOptions) => {

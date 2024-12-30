@@ -74,7 +74,6 @@ const Profile = ()=>{
             />
             <button className="inline-btn" onClick={onSubmitHandler}>Update</button>
           </form>
-
         </div>
 
         <div className="box-container">
