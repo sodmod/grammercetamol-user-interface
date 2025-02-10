@@ -14,7 +14,7 @@ const AllCourse = () => {
     <h2>Explore Courses</h2>
     {loading ? <Spinner2/> : <div className={styles.grid_container}>
       {Array.isArray(allCourse) && allCourse.map((course) => (
-        <EachCourse key={course.courseId} course={course} to={routePath.course.view} buttonText={"View More"}/>
+        <EachCourse key={course.courseId} data={course} to={routePath.course.view} buttonText={"View More"}/>
       ))}
     </div>}
   </div>
